@@ -2,6 +2,7 @@
 ArrayList<GameObject> objects;
 Player myPlayer;
 
+
 //color pallette
 color black  = #000000;
 color white  = #FFFFFF;
@@ -32,8 +33,9 @@ PImage sky;
 //#################################### SETUP ###############################################
 
 void setup() {
+
   //graphics
-  size(800, 800);
+  size(800, 600);
   rectMode(CENTER);
   noStroke();
   imageMode (CENTER);
@@ -45,11 +47,25 @@ void setup() {
 
   //initialize key variables
   wkey = akey = skey = dkey = spacekey = false;
+  
+ 
 
   //Game Object initializations
   objects = new ArrayList<GameObject>();
   myPlayer = new Player();
   objects.add(myPlayer);
+
+  int i = 0;
+  while (i < 100) {
+   Obstacle myObstacle = new Obstacle();
+
+   objects.add(myObstacle);
+
+   i++; 
+
+  }
+
+
   
   //images
   
@@ -59,6 +75,7 @@ void setup() {
 //##################################### DRAW ################################################
 
 void draw() {
+ 
   if      (mode == INTRO)    intro();
   else if (mode == GAME)     game();
   else if (mode == PAUSE)    pause();
